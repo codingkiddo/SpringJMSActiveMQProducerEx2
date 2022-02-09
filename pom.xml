@@ -24,19 +24,26 @@
 			<artifactId>spring-context</artifactId>
 			<version>${springframework.version}</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
 			<version>${springframework.version}</version>
-		</dependency>
+		</dependency> -->
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-all -->
+<dependency>
+    <groupId>org.apache.activemq</groupId>
+    <artifactId>activemq-all</artifactId>
+    <version>5.16.3</version>
+</dependency>
 		
 		    <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-jms-client-bom -->
-<dependency>
+<!-- <dependency>
     <groupId>org.wildfly</groupId>
     <artifactId>wildfly-jms-client-bom</artifactId>
     <version>26.0.1.Final</version>
     <type>pom</type>
-</dependency>
+</dependency> -->
 		
 
 		
