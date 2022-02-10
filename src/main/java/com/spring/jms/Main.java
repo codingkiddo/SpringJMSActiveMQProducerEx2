@@ -10,6 +10,7 @@ import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
@@ -48,7 +49,11 @@ public class Main {
 			session.close();
 			connection.close();
 		} catch (JMSException e) {
-			// TODO: handle exception
+			System.out.println("Message : " + e.getMessage());
+		} catch (ApplicationContextException e) {
+			System.out.println("ApplicationContextException - Message : " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Message : " + e.getMessage());
 		}
 		
 		((AnnotationConfigApplicationContext) applicationContext).close();
