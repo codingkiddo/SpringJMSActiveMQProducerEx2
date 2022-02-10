@@ -7,17 +7,14 @@ public class JmsMain {
 
 	public static void main(String[] args) {
 
-		try {
-			ApplicationContext applicationContext = new AnnotationConfigApplicationContext(JmsConfig.class);
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
-			JmsQueueSender jmsQueueSender = applicationContext.getBean(JmsQueueSender.class);
-			jmsQueueSender.simpleSend("Fuck You All !!!! Guys");
-
-			((AnnotationConfigApplicationContext) applicationContext).close();
-		} catch (Exception e) {
-			System.out.println("ApplicationContextException - Message : " + e);
-			e.printStackTrace();
-		}
+		JmsQueueSender jmsQueueSender = applicationContext.getBean(JmsQueueSender.class);
+		jmsQueueSender.simpleSend("Fuck You All !!!! Guys");
+//		Thread.sleep(10L * 1000);
+		System.out.println("Sent Message !!!!");
+		
+		((AnnotationConfigApplicationContext) applicationContext).close();
 
 	}
 }

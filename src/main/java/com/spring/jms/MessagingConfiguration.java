@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.core.JmsTemplate;
 
 @Configuration
-public class JmsConfig {
+public class MessagingConfiguration {
 
 	@Bean
-	public ActiveMQConnectionFactory senderConnectionFactory() {
+	public ActiveMQConnectionFactory connectionFactory() {
 		ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory();
 		activeMQConnectionFactory.setBrokerURL("tcp://localhost:61616");
 		return activeMQConnectionFactory;
@@ -25,7 +25,7 @@ public class JmsConfig {
 
 	@Bean
 	public JmsTemplate jmsTemplate() {
-		JmsTemplate jmsTemplate =  new  JmsTemplate (senderConnectionFactory ());
+		JmsTemplate jmsTemplate =  new  JmsTemplate(connectionFactory());
 		jmsTemplate.setDefaultDestination(getDestination());
 		return jmsTemplate;
 	}
@@ -37,4 +37,16 @@ public class JmsConfig {
 		return jmsQueueSender;
 	}
 
+//	@Bean
+//	public SampleJmsErrorHandler sampleJmsErrorHandler() {
+//		return new SampleJmsErrorHandler();
+//	}
+	
+//	@Bean
+//    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+//        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+//        factory.setConnectionFactory(connectionFactory());
+//        factory.setErrorHandler(sampleJmsErrorHandler());
+//        return factory;
+//    }
 }
